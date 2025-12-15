@@ -1,0 +1,3 @@
+[submodule "REIS_Frontend"]
+	path = REIS_Frontend
+	url = git@github.com:Ahad-Waqas/REIS_Frontend.git

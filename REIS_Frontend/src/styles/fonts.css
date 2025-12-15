@@ -1,0 +1,20 @@
+.page {
+  font-family: var(--inter), serif;
+}
+
+.heading {
+  font-family: var(--apple-garamond), serif;
+  line-height: 95%;
+  margin: 0;
+}
+
+.heading {
+  font-size: clamp(4.5rem, -0.875rem + 8.333vw, 9.5rem);
+}
+
+.paragraph {
+  font-size: 18px;
+  font-family: var(--inter), serif;
+  line-height: 150%;
+  margin: 0;
+}

@@ -1,0 +1,1 @@
+datetime.utcfromtimestamp(post["created_utc"]).strftime('%Y-%m-%d')
