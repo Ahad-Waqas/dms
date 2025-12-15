@@ -727,7 +727,7 @@ const fetchFilteredWildfireData = async (query: string) => {
             {mapView === 'cesium' ? (
               <CesiumMap wildfireData={wildfireData} />
             ) : (
-              <WildFireMap disaster={wildfireData} mapView={mapView} />
+              <WildFireMap disaster={wildfireData} mapType={mapType} mapView={mapView} interactive={true} />
             )}
           </div>
         </TabsContent>

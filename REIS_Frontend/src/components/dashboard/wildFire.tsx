@@ -385,19 +385,19 @@ export default function WildFireMap({
   }, [mapView, theme]);
 
   const getFireColor = (intensity: number): string => {
-    if (intensity >= 9.0) return 'rgb(253, 231, 37)';  // Yellow (high)
-    if (intensity >= 8.0) return 'rgb(94, 201, 98)';   // Green
-    if (intensity >= 7.0) return 'rgb(33, 145, 140)';  // Teal
-    if (intensity >= 6.0) return 'rgb(59, 82, 139)';   // Blue-purple
-    return 'rgb(68, 1, 84)';                           // Dark purple (low)
+    if (intensity >= 9.0) return '#FDE725'; // Bright yellow (Viridis high)
+    if (intensity >= 8.0) return '#AADC32'; // Yellow-green
+    if (intensity >= 7.0) return '#5DC863'; // Green
+    if (intensity >= 6.0) return '#21908C'; // Teal
+    return '#3B528B'; // Blue-purple (Viridis low)
   };
 
   const getMarkerColorClass = (intensity: number): string => {
-    if (intensity >= 9.0) return 'bg-[rgb(253,231,37)]';  // Yellow (high)
-    if (intensity >= 8.0) return 'bg-[rgb(94,201,98)]';   // Green
-    if (intensity >= 7.0) return 'bg-[rgb(33,145,140)]';  // Teal
-    if (intensity >= 6.0) return 'bg-[rgb(59,82,139)]';   // Blue-purple
-    return 'bg-[rgb(68,1,84)]';                           // Dark purple (low)
+    if (intensity >= 9.0) return 'bg-yellow-400';
+    if (intensity >= 8.0) return 'bg-lime-400';
+    if (intensity >= 7.0) return 'bg-green-500';
+    if (intensity >= 6.0) return 'bg-teal-500';
+    return 'bg-blue-600';
   };
 
   const getGeometryCenter = (geometry: { type: string, coordinates: any }): [number, number] => {
@@ -576,18 +576,17 @@ export default function WildFireMap({
             const heatmapData = heatmapPoints.map(point => [point.lat, point.lng, point.count]);
             
             const heatLayer = (L as any).heatLayer(heatmapData, {
-              radius: 25,
-              blur: 15,
-              maxZoom: 10,
+              radius: 35,
+              blur: 25,
               max: 10,
-              minOpacity: 0.5,
+              minOpacity: 0.6,
               gradient: {
-                0.0: "rgb(68, 1, 84)",       // Dark purple (Viridis low)
-                0.2: "rgb(59, 82, 139)",     // Blue-purple
-                0.4: "rgb(33, 145, 140)",    // Teal
-                0.6: "rgb(94, 201, 98)",     // Green
-                0.8: "rgb(253, 231, 37)",    // Yellow
-                1.0: "rgb(253, 231, 37)"     // Bright yellow (Viridis high)
+                0.0: "rgba(68, 1, 84, 0)",      // Transparent dark purple
+                0.2: "rgb(59, 82, 139)",        // Blue-purple (Viridis)
+                0.4: "rgb(33, 144, 140)",       // Teal (Viridis)
+                0.6: "rgb(93, 200, 99)",        // Green (Viridis)
+                0.8: "rgb(170, 220, 50)",       // Yellow-green (Viridis)
+                1.0: "rgb(253, 231, 37)"        // Bright yellow (Viridis)
               }
             }).addTo(mapRef.current!);
             
@@ -734,11 +733,11 @@ export default function WildFireMap({
           z-index: 1;
           cursor: pointer;
         }
-        .bg-red-900 { background-color: #7f1d1d; }
-        .bg-red-700 { background-color: #b91c1c; }
-        .bg-red-500 { background-color: #ef4444; }
-        .bg-red-400 { background-color: #f87171; }
-        .bg-red-300 { background-color: #fca5a5; }
+        .bg-yellow-400 { background-color: #FDE725; }
+        .bg-lime-400 { background-color: #AADC32; }
+        .bg-green-500 { background-color: #5DC863; }
+        .bg-teal-500 { background-color: #21908C; }
+        .bg-blue-600 { background-color: #3B528B; }
       `}</style>
 
       <DisasterModal isOpen={modalOpen} onClose={() => setModalOpen(false)} disaster={selectedDisaster} />
